@@ -1,0 +1,191 @@
+body {
+  padding: 0;
+  margin: 0;
+  font-size: 14px;
+  font-family: "Lucida Grande", "Lucida Sans", Geneva, Verdana, sans-serif;
+}
+
+ul {
+  padding: 0;
+}
+
+input {
+  font-size: 20px;
+  border: 1px solid #a169f7;
+  border-radius: 3px;
+  margin: 10px;
+  padding: 10px;
+  font-family: "Montserrat", sans-serif;
+  text-align: center;
+}
+
+.container {
+  max-width: 1024px;
+  margin: 0 auto;
+}
+
+.top-stripe {
+  width: 100%;
+  display: block;
+  border-bottom: 1px solid #d8d8d8;
+  background: #f7f7f7;
+  margin: 0 auto;
+  position: relative;
+  text-align: center;
+}
+
+.cards {
+  display: flex;
+  align-items: flex-start;
+  flex-wrap: wrap;
+  height: 100%;
+}
+
+.user-card {
+  width: 50%;
+  padding: 20px 0 20px 0;
+  text-align: center;
+}
+
+.avatar-link {
+  border: 3px solid #00aaff;
+  display: inline-block;
+  overflow: hidden;
+  background: #fff;
+  border-radius: 100%;
+  box-shadow: 4px -1px 7px 0px rgb(181, 181, 181);
+  transition: -webkit-transform 0.5s ease-in-out;
+  -webkit-transition: -webkit-transform 0.5s ease-in-out;
+}
+
+.avatar-link:hover {
+  transform: rotate(-360deg);
+  -webkit-transform: rotate(-360deg);
+}
+
+.avatar-link img {
+  display: block;
+  width: 80px;
+  height: 80px;
+}
+
+.login {
+  font-size: 18px;
+  text-decoration: underline;
+  color: #00aaff;
+}
+
+.user-link {
+  text-decoration: none;
+  outline: none;
+  display: inline-block;
+  width: 140px;
+  height: 45px;
+  line-height: 45px;
+  border-radius: 45px;
+  margin: 10px 20px;
+  font-family: "Montserrat", sans-serif;
+  font-size: 11px;
+  text-transform: uppercase;
+  text-align: center;
+  letter-spacing: 3px;
+  font-weight: 600;
+  color: #ff6163;
+  background: #ffffff;
+  box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
+  transition: 0.3s;
+}
+
+.user-link:hover {
+  background: #97cf26;
+  box-shadow: 0 15px 20px rgba(151, 207, 38, 0.34);
+  color: #ffffff;
+  transform: translateY(3px);
+}
+
+.pagination {
+  display: block;
+  text-align: center;
+}
+
+.pagination li {
+  list-style-type: none;
+  display: inline-block;
+  min-width: 38px;
+  font-size: 16px;
+  line-height: 38px;
+  text-align: center;
+  width: 20px;
+}
+.pagination > .active {
+  background: #a169f7;
+  border: 1px solid #ffffff;
+  border-radius: 20px;
+  color: #ffffff;
+}
+
+.page-link {
+  text-decoration: none;
+  color: #000000;
+}
+
+.github-card {
+  text-align: center;
+  border-radius: 5px;
+  background: #fff;
+  color: #555;
+  position: relative;
+}
+
+.github-card .header {
+  position: relative;
+  padding: 0;
+  margin: 0;
+  height: 150px;
+  background-size: cover;
+  background-position: center;
+  background-color: #000;
+  background-image: url(img/background.jpg);
+}
+.github-card .avatar-link {
+  margin-top: -75px;
+  position: relative;
+}
+
+.github-card .avatar-link img {
+  width: 140px;
+  height: 140px;
+}
+
+.github-card .repo-name {
+  padding-top: 20px;
+  font-size: 22px;
+  color: #ffffff;
+}
+
+.github-card ul {
+  display: flex;
+  align-items: flex-start;
+  flex-wrap: wrap;
+  font-size: 12px;
+  color: #707070;
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+.github-card li {
+  padding-top: 20px;
+  width: 50%;
+  height: 100%;
+  list-style-type: none;
+}
+
+.github-card .title {
+  font-size: 18px;
+  color: #a169f7;
+}
+
+.github-card .description {
+  padding: 10px 0;
+  font-style: italic;
+}
