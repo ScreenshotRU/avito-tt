@@ -59,8 +59,8 @@ input {
 }
 
 .avatar-link:hover {
-  transform: rotate(-360deg);
-  -webkit-transform: rotate(-360deg);
+  transform: rotate(-180deg);
+  -webkit-transform: rotate(-180deg);
 }
 
 .avatar-link img {
@@ -145,7 +145,7 @@ input {
   background-size: cover;
   background-position: center;
   background-color: #000;
-  background-image: url(img/background.jpg);
+  background-image: url(../img/background.jpg);
 }
 .github-card .avatar-link {
   margin-top: -75px;

@@ -1,32 +1,40 @@
 import React, { useState, useEffect } from "react";
-import "../styles.css";
 import useDebounce from "../helpers/useDebounce";
-import Pagination from "./Pagination";
-import { Link } from "react-router-dom";
+import Pagination from "../components/Pagination";
+import RepoCardComponent from "../components/RepoCardComponent";
+import "../assets/styles/styles.css";
 
-const Api = (props) => {
-  const [currentPage, setCurrentPage] = useState(
-    parseInt(localStorage.getItem("currentPage"), 10) || 1
-  );
+const ELEMENTS_PER_PAGE = 10;
+const MAX_PAGES = 100;
+
+const HomePage = (props) => {
+  const defaultCurrentPage =
+    parseInt(localStorage.getItem("currentPage"), 10) || 1;
+  const defaultInputValue = localStorage.getItem("inputValue") || "";
+  const [isLoading, setIsLoading] = useState(false);
+  const [currentPage, setCurrentPage] = useState(defaultCurrentPage);
   const [data, setData] = useState([]);
   const [mostPopularRepos, setMostPopularRepos] = useState([]);
-  const [inputValue, setInputValue] = useState(
-    localStorage.getItem("inputValue") || ""
-  );
+  const [inputValue, setInputValue] = useState(defaultInputValue);
+  const debouncedSearchTerm = useDebounce(inputValue, 1000);
+  const [totalCount, setTotalCount] = useState(0);
   const handleChange = (e) => {
     setInputValue(e.target.value);
     localStorage.setItem("inputValue", e.target.value);
     localStorage.setItem("currentPage", 1);
     setCurrentPage(1);
   };
-  const debouncedSearchTerm = useDebounce(inputValue, 1000);
+  const result = inputValue.length > 1 ? data : mostPopularRepos;
+  const isVisiblePaginaton =
+    inputValue.length > 1 && !isLoading && data.length > 0;
+
+  const pagesCount = totalCount / ELEMENTS_PER_PAGE;
+  const totalPages = pagesCount > MAX_PAGES ? MAX_PAGES : Math.ceil(pagesCount);
   const goToPage = (number) => {
     const pageNumber = number + 1;
     localStorage.setItem("currentPage", pageNumber);
     setCurrentPage(pageNumber);
   };
-  const [isLoading, setIsLoading] = useState(false);
-  const [totalCount, setTotalCount] = useState(0);
 
   useEffect(() => {
     if (inputValue.length > 1 && debouncedSearchTerm) {
@@ -63,13 +71,6 @@ const Api = (props) => {
       });
   }, []);
 
-  const result = inputValue.length > 1 ? data : mostPopularRepos;
-  const isVisiblePaginaton =
-    inputValue.length > 1 && !isLoading && data.length > 0;
-  const pagesCount = totalCount / 10;
-  const totalPages =
-    pagesCount > 1 ? Math.floor(pagesCount) : Math.ceil(pagesCount);
-
   return (
     <div className="main-area">
       <div className="top-stripe">
@@ -81,50 +82,18 @@ const Api = (props) => {
           autoComplete="off"
         />
       </div>
+      {isLoading && <div>Loading...</div>}
       <div className="container">
         <div className="cards">
           {result.map((repo) => (
-            <div key={repo.id} className="user-card">
-              <Link
-                to={`/repos/${repo.owner.login}/${repo.name}`}
-                className="avatar-link"
-              >
-                {repo.owner && repo.owner.avatar_url && (
-                  <img src={repo.owner.avatar_url} alt="avatar" />
-                )}
-              </Link>
-              <div className="info">
-                <Link
-                  to={`/repos/${repo.owner.login}/${repo.name}`}
-                  className="login"
-                >
-                  {repo.name}
-                </Link>
-                <div className="stars-count">
-                  <span>&#9733;</span>
-                  {repo.stargazers_count}
-                </div>
-                <div className="last-commit">
-                  {repo.updated_at && repo.updated_at.toString().slice(0, 10)}
-                </div>
-                <a
-                  href={repo.owner.html_url}
-                  className="user-link"
-                  target="_blank"
-                >
-                  Github
-                </a>
-              </div>
-            </div>
+            <RepoCardComponent {...repo} key={repo.id} />
           ))}
         </div>
       </div>
-
       {isVisiblePaginaton && (
         <Pagination
           currentPage={currentPage}
-          pageNeighbours={2}
-          totalPages={totalPages > 100 ? 100 : totalPages}
+          totalPages={totalPages}
           goToPage={goToPage}
         />
       )}
@@ -132,4 +101,4 @@ const Api = (props) => {
   );
 };
 
-export default Api;
+export default HomePage;

@@ -24,7 +24,7 @@ const range = (from, to, step = 1) => {
 export default class Pagination extends React.Component {
   constructor(props) {
     super(props);
-    const { pageNeighbours = 3 } = props;
+    const { pageNeighbours } = props;
 
     // pageNeighbours can be: 0, 1 or 2
     this.pageNeighbours =
@@ -164,4 +164,8 @@ Pagination.propTypes = {
   currentPage: PropTypes.number.isRequired,
   totalPages: PropTypes.number.isRequired,
   goToPage: PropTypes.func.isRequired,
+};
+
+Pagination.defaultProps = {
+  pageNeighbours: 2,
 };

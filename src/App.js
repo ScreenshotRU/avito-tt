@@ -1,15 +1,15 @@
 import React from "react";
-import Api from "./components/Api";
-import "./styles.css";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
-import ShowProfile from "./components/ShowProfile";
+import ShowProfile from "./containers/RepoPage";
+import HomePage from "./containers/HomePage";
+import "../src/assets/styles/styles.css";
 
 export default function App() {
   return (
     <Router>
       <Switch>
         <Route exact path="/">
-          <Api />
+          <HomePage />
         </Route>
         <Route path="/repos/:owner/:repo" component={ShowProfile} />
       </Switch>
