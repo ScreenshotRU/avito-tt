@@ -74,7 +74,7 @@ RepoComponent.propTypes = {
 
 RepoComponent.defaultProps = {
   languages: {},
-  contributors: {},
+  contributors: [],
 };
 
 export default RepoComponent;
