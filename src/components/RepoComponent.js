@@ -60,17 +60,15 @@ const RepoComponent = (props) => (
 );
 
 RepoComponent.propTypes = {
-  props: PropTypes.shape({
-    id: PropTypes.string.isRequired,
-    name: PropTypes.string.isRequired,
-    description: PropTypes.string.isRequired,
-    stargazers_count: PropTypes.number.isRequired,
-    updated_at: PropTypes.string,
-    owner: PropTypes.shape({
-      login: PropTypes.string.isRequired,
-      avatar_url: PropTypes.string,
-      html_url: PropTypes.string.isRequired,
-    }),
+  id: PropTypes.number,
+  name: PropTypes.string,
+  description: PropTypes.string,
+  stargazers_count: PropTypes.number,
+  updated_at: PropTypes.string,
+  owner: PropTypes.shape({
+    login: PropTypes.string.isRequired,
+    avatar_url: PropTypes.string,
+    html_url: PropTypes.string.isRequired,
   }),
 };
 
