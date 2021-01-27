@@ -8,7 +8,7 @@ export default function App() {
   return (
     <Router>
       <Switch>
-        <Route exact path="/">
+        <Route exact path="/avito_tt">
           <HomePage />
         </Route>
         <Route path="/repos/:owner/:repo" component={ShowProfile} />

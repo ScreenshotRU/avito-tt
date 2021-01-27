@@ -53,7 +53,7 @@ const RepoComponent = (props) => (
         </li>
       </ul>
     </div>
-    <Link to={`/`} className="user-link">
+    <Link to={`/avito_tt`} className="user-link">
       Back
     </Link>
   </div>
