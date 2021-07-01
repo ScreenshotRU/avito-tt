@@ -40,7 +40,7 @@ const HomePage = (props) => {
     if (inputValue.length > 1 && debouncedSearchTerm) {
       setIsLoading(true);
       fetch(
-        `https://cors-anywhere.herokuapp.com/https://api.github.com/search/repositories?q=${inputValue}&sort=stars&order=desc&page=${currentPage}&per_page=10`
+        `https://api.github.com/search/repositories?q=${inputValue}&sort=stars&order=desc&page=${currentPage}&per_page=10`
       )
         .then((response) => response.json())
         .then((response) => {
